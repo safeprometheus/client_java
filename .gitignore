@@ -14,3 +14,5 @@ simpleclient_pushgateway/mockserver_request.log
 nb-configuration.xml
 
 pom.xml.versionsBackup
+release.properties
+
