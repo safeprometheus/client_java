@@ -5,7 +5,7 @@
 
   <groupId>com.github.safeprometheus</groupId>
   <artifactId>safeprometheus</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <name>safeprometheus</name>
   <description>Statically-typed Prometheus Client</description>
