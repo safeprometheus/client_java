@@ -59,10 +59,10 @@ This document is valid for Safeprometheus version 1.0.0.
     <dependency>
       <groupId>com.github.safeprometheus</groupId>
       <artifactId>safeprometheus</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
     </dependency>
 
-For Gradle, SBT, and other build tools, please refer to [the Maven page](https://search.maven.org/artifact/com.github.safeprometheus/safeprometheus/1.0.0/jar).
+For Gradle, SBT, and other build tools, please refer to [the Maven page](https://search.maven.org/artifact/com.github.safeprometheus/safeprometheus/1.0.1/jar).
 
 ## Version Base
 
@@ -74,7 +74,7 @@ For Gradle, SBT, and other build tools, please refer to [the Maven page](https:/
   <tbody>
     <tr>
       <td>0.8.0</td>
-      <td>1.0.0</td>
+      <td>1.0.1</td>
     </tr>
   </tbody>
 </table>
