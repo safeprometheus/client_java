@@ -1,19 +1,17 @@
 package com.github.safeprometheus;
 
-import io.prometheus.client.Summary;
+import com.github.safeprometheus.base.SafeSummary;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class SummaryTest {
   @Test
   public void shouldHaveCorrectValue() {
-    Summary summaryOriginal = Summary.build("summaryTest", "the help")
-        .labelNames("blah")
+    SummaryWith1Label summary = SafeSummary.builder()
         .quantile(1.0d, 0.1d)
         .quantile(0.9d, 0.1d)
         .quantile(0.5d, 0.1d)
-        .create();
-    SummaryWith1Label summary = new SummaryWith1Label(summaryOriginal);
+        .buildWith1Label("summary_test", "help", "firstLabel");
 
     summary.observe(10.d, "taskType1");
     summary.observe(50.d, "taskType1");

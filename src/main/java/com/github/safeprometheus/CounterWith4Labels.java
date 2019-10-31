@@ -1,6 +1,7 @@
 package com.github.safeprometheus;
 
-import com.github.safeprometheus.helper.StringHelper;
+import static com.github.safeprometheus.helper.StringHelper.nullSafe;
+
 import io.prometheus.client.Counter;
 import java.lang.String;
 
@@ -13,13 +14,11 @@ public class CounterWith4Labels {
   }
 
   public void inc(String labelValue1, String labelValue2, String labelValue3, String labelValue4) {
-    this.counter.labels(StringHelper.nullSafe(labelValue1), StringHelper.nullSafe(labelValue2), StringHelper
-        .nullSafe(labelValue3), StringHelper.nullSafe(labelValue4)).inc();
+    this.counter.labels(nullSafe(labelValue1), nullSafe(labelValue2), nullSafe(labelValue3), nullSafe(labelValue4)).inc();
   }
 
   public void inc(double amount, String labelValue1, String labelValue2, String labelValue3,
       String labelValue4) {
-    this.counter.labels(StringHelper.nullSafe(labelValue1), StringHelper.nullSafe(labelValue2), StringHelper
-        .nullSafe(labelValue3), StringHelper.nullSafe(labelValue4)).inc(amount);
+    this.counter.labels(nullSafe(labelValue1), nullSafe(labelValue2), nullSafe(labelValue3), nullSafe(labelValue4)).inc(amount);
   }
 }

@@ -1,8 +1,8 @@
 package com.github.safeprometheus.base;
 
+import com.github.safeprometheus.GaugeWith1Label;
 import com.github.safeprometheus.GaugeWith2Labels;
 import com.github.safeprometheus.GaugeWith3Labels;
-import com.github.safeprometheus.GaugeWith1Label;
 import com.github.safeprometheus.GaugeWith4Labels;
 import com.github.safeprometheus.GaugeWith5Labels;
 import com.github.safeprometheus.GaugeWithNoLabel;

@@ -1,16 +1,16 @@
 package com.github.safeprometheus.base;
 
-import com.github.safeprometheus.SummaryWith5Labels;
 import com.github.safeprometheus.SummaryWith1Label;
 import com.github.safeprometheus.SummaryWith2Labels;
 import com.github.safeprometheus.SummaryWith3Labels;
 import com.github.safeprometheus.SummaryWith4Labels;
+import com.github.safeprometheus.SummaryWith5Labels;
 import com.github.safeprometheus.SummaryWithNoLabel;
 import io.prometheus.client.Summary;
 import java.lang.String;
 
 public class SafeSummary {
-  private Summary.Builder builder;
+  private Summary.Builder builder = new Summary.Builder();
 
   public SummaryWithNoLabel buildWithNoLabel(String metricName, String help) {
     this.builder.name(metricName);

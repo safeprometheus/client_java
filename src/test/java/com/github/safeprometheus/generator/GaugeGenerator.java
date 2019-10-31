@@ -60,7 +60,7 @@ public class GaugeGenerator implements Generator {
         .addMethods(methods)
         .addField(gaugeField)
         .build();
-    JavaFile result = JavaFile.builder("com.safeprometheus", klazz)
+    JavaFile result = JavaFile.builder("com.github.safeprometheus", klazz)
         .addStaticImport(StringHelper.class, "nullSafe")
         .build();
 
@@ -92,7 +92,7 @@ public class GaugeGenerator implements Generator {
     for (int labelCount = 0; labelCount <= maxLabelCount; labelCount++) {
 
       ClassName klazzReturns = ClassName
-          .get("com.safeprometheus", getTargetClassName(labelCount));
+          .get("com.github.safeprometheus", getTargetClassName(labelCount));
 
       Builder methodCreateWith = MethodSpec.methodBuilder("createWith" + Util.inflectLabel(labelCount) )
           .addModifiers(Modifier.PUBLIC)
@@ -114,7 +114,7 @@ public class GaugeGenerator implements Generator {
         .addModifiers(Modifier.PUBLIC)
         .build();
 
-    JavaFile base = JavaFile.builder("com.safeprometheus.base", baseKlazz).build();
+    JavaFile base = JavaFile.builder("com.github.safeprometheus.base", baseKlazz).build();
 
     try {
       base.writeTo(targetFile);

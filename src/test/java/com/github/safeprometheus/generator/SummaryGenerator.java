@@ -68,7 +68,7 @@ public class SummaryGenerator implements Generator {
         .addMethods(methods)
         .addField(gaugeField)
         .build();
-    JavaFile result = JavaFile.builder("com.safeprometheus", klazz)
+    JavaFile result = JavaFile.builder("com.github.safeprometheus", klazz)
         .addStaticImport(StringHelper.class, "nullSafe")
         .build();
 
@@ -95,7 +95,7 @@ public class SummaryGenerator implements Generator {
     for (int labelCount = 0; labelCount <= maxLabelCount; labelCount++) {
 
       ClassName klazzReturns = ClassName
-          .get("com.safeprometheus", getTargetClassName(labelCount));
+          .get("com.github.safeprometheus", getTargetClassName(labelCount));
 
       Builder methodCreateWith = MethodSpec.methodBuilder("buildWith" + Util.inflectLabel(labelCount) )
           .addModifiers(Modifier.PUBLIC)
@@ -131,6 +131,7 @@ public class SummaryGenerator implements Generator {
     methods.add(builderMethod);
 
     FieldSpec builderField = FieldSpec.builder(Summary.Builder.class, "builder", Modifier.PRIVATE)
+        .initializer("new Summary.Builder()")
         .build();
 
     MethodSpec quantileMethod = MethodSpec.methodBuilder("quantile")
@@ -150,7 +151,7 @@ public class SummaryGenerator implements Generator {
         .addField(builderField)
         .build();
 
-    JavaFile base = JavaFile.builder("com.safeprometheus.base", baseKlazz).build();
+    JavaFile base = JavaFile.builder("com.github.safeprometheus.base", baseKlazz).build();
 
     try {
       base.writeTo(targetFile);
@@ -160,6 +161,6 @@ public class SummaryGenerator implements Generator {
   }
 
   private ClassName getBaseKlazzTarget() {
-    return ClassName.get("com.safeprometheus.base", "Safe" + getBaseName());
+    return ClassName.get("com.github.safeprometheus.base", "Safe" + getBaseName());
   }
 }

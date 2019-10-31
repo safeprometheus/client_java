@@ -1,5 +1,7 @@
 package com.github.safeprometheus;
 
+import static com.github.safeprometheus.helper.StringHelper.nullSafe;
+
 import io.prometheus.client.Counter;
 import java.lang.String;
 

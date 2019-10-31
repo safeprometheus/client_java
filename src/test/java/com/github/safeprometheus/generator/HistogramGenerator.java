@@ -70,7 +70,7 @@ public class HistogramGenerator implements  Generator{
         .addMethods(methods)
         .addField(gaugeField)
         .build();
-    JavaFile result = JavaFile.builder("com.safeprometheus", klazz)
+    JavaFile result = JavaFile.builder("com.github.safeprometheus", klazz)
         .addStaticImport(StringHelper.class, "nullSafe")
         .build();
 
@@ -97,7 +97,7 @@ public class HistogramGenerator implements  Generator{
     for (int labelCount = 0; labelCount <= maxLabelCount; labelCount++) {
 
       ClassName klazzReturns = ClassName
-          .get("com.safeprometheus", getTargetClassName(labelCount));
+          .get("com.github.safeprometheus", getTargetClassName(labelCount));
 
       Builder methodCreateWith = MethodSpec.methodBuilder("buildWith" + Util.inflectLabel(labelCount) )
           .addModifiers(Modifier.PUBLIC)
@@ -133,6 +133,7 @@ public class HistogramGenerator implements  Generator{
     methods.add(builderMethod);
 
     FieldSpec builderField = FieldSpec.builder(Histogram.Builder.class, "builder", Modifier.PRIVATE)
+        .initializer("new Histogram.Builder()")
         .build();
 
     MethodSpec bucketsMethod = MethodSpec.methodBuilder("buckets")
@@ -152,7 +153,7 @@ public class HistogramGenerator implements  Generator{
         .addField(builderField)
         .build();
 
-    JavaFile base = JavaFile.builder("com.safeprometheus.base", baseKlazz).build();
+    JavaFile base = JavaFile.builder("com.github.safeprometheus.base", baseKlazz).build();
 
     try {
       base.writeTo(targetFile);
@@ -163,6 +164,6 @@ public class HistogramGenerator implements  Generator{
 
 
   private ClassName getBaseKlazzTarget() {
-    return ClassName.get("com.safeprometheus.base", "Safe" + getBaseName());
+    return ClassName.get( "com.github.safeprometheus.base", "Safe" + getBaseName());
   }
 }

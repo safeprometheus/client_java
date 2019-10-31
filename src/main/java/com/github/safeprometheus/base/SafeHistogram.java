@@ -1,16 +1,16 @@
 package com.github.safeprometheus.base;
 
-import com.github.safeprometheus.HistogramWithNoLabel;
 import com.github.safeprometheus.HistogramWith1Label;
 import com.github.safeprometheus.HistogramWith2Labels;
 import com.github.safeprometheus.HistogramWith3Labels;
 import com.github.safeprometheus.HistogramWith4Labels;
 import com.github.safeprometheus.HistogramWith5Labels;
+import com.github.safeprometheus.HistogramWithNoLabel;
 import io.prometheus.client.Histogram;
 import java.lang.String;
 
 public class SafeHistogram {
-  private Histogram.Builder builder;
+  private Histogram.Builder builder = new Histogram.Builder();
 
   public HistogramWithNoLabel buildWithNoLabel(String metricName, String help) {
     this.builder.name(metricName);

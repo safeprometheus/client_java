@@ -1,6 +1,7 @@
 package com.github.safeprometheus;
 
-import com.github.safeprometheus.helper.StringHelper;
+import static com.github.safeprometheus.helper.StringHelper.nullSafe;
+
 import io.prometheus.client.Summary;
 import java.lang.String;
 
@@ -16,10 +17,10 @@ public class SummaryWith1Label {
   }
 
   public void observe(double val, String labelValue1) {
-    this.summary.labels(StringHelper.nullSafe(labelValue1)).observe(val);
+    this.summary.labels(nullSafe(labelValue1)).observe(val);
   }
 
   public Summary.Timer startTimer(String labelValue1) {
-    return this.summary.labels(StringHelper.nullSafe(labelValue1)).startTimer();
+    return this.summary.labels(nullSafe(labelValue1)).startTimer();
   }
 }
