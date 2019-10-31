@@ -194,14 +194,6 @@
     <profile>
       <id>test-v0.7</id>
 
-      <!-- When this profile will turn on... -->
-      <activation>
-        <property>
-          <name>buildVer</name>
-          <value>test-v0.7</value>
-        </property>
-      </activation>
-
       <!-- What this profile changes... -->
       <dependencies>
         <dependency>
